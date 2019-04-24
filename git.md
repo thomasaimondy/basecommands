@@ -10,3 +10,9 @@ git add -A
 git commit -m ""
 git push 
 ```
+
+download git for windows in mainland of china:
+
+```
+https://github.com/waylau/git-for-win
+```
