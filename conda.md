@@ -1,6 +1,7 @@
 ```bash
 conda create -n XXname python=2.7
 conda env export > environment.yml
+conda env create -f environment.yml
 conda create --name myclone --clone myenv
 conda activate XXname
 conda deactivate
