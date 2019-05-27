@@ -6,3 +6,5 @@ basic commands on ubuntu
 ```sh
 du -sh * |grep G
 ```
+
+Check first: /var/log/cups !!
