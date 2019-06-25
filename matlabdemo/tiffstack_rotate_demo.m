@@ -1,3 +1,5 @@
+%% if you are running this in win7, you have to 
+%  close the explorer folder first!!
 
 clc;    % Clear the command window.
 fromFolder = 'F:\Desktop\testimg';
