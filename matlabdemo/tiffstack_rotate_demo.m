@@ -1,14 +1,20 @@
-%% if you are running this in win7, you have to 
+%if you are running this in win7, you have to 
 %  close the explorer folder first!!
 
-clc;    % Clear the command window.
-fromFolder = 'F:\Desktop\testimg';
-toFolder = 'F:\Desktop\toimg';
+
+
+delete(gcp('nocreate'));
+p=parpool('local',4);
+tic;
+% clc;    % Clear the command window.
+fromFolder = 'C:\Users\wangh\Desktop\testimg';
+toFolder = 'C:\Users\wangh\Desktop\toimg';
+% toFolder = 'F:\Desktop\toimg';
 rotateDegree = -90;
 
 
 fileList = {};
-%% GET ALL THE FILE NAMES
+% GET ALL THE FILE NAMES
 % Get list of all subfolders.
 allSubFolders = genpath(fromFolder);
 % Parse into a cell array.
@@ -47,28 +53,30 @@ for k = 1 : numberOfFolders
 end
 
 
-%% SAVE TO THE NEW DIRECTORY
-for k = 1 : numberOfFolders
+% SAVE TO THE NEW DIRECTORY
+parfor k = 1 : numberOfFolders
 	thisFolder = listOfFolderNames{k};
 	newFolder = replace(thisFolder,fromFolder,toFolder);
 	mkdir(newFolder);
 end
 
 
-for k=1 : length(fileList)
-    fprintf('processing %f percentage.\n', k/length(fileList)*100);
+parfor k=1 : length(fileList)
+    fprintf('The %d th image is processing.\n',k);
 	fromname = fileList{k};
 	toname = replace(fromname,fromFolder,toFolder);
     numimgs = size(imfinfo(fromname),1);
+
     for i = 1:numimgs
-      img = imread(fromname,i);
-      img = imrotate(img,rotateDegree); 
+      img = imrotate(imread(fromname,i),rotateDegree);
       if i==1
-        imwrite(img,toname);
+        imwrite(img,toname,'Compression','lzw');
       else
-        imwrite(img,toname,'WriteMode','append');
+        imwrite(img,toname,'WriteMode','append','Compression','lzw');
       end
     end
+    
 end
-
+toc;
+delete(p);
 fprintf('finish.\n');
