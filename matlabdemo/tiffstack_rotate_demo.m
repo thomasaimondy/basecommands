@@ -1,15 +1,12 @@
 %if you are running this in win7, you have to 
 %  close the explorer folder first!!
 
-
-
 delete(gcp('nocreate'));
 p=parpool('local',4);
 tic;
-% clc;    % Clear the command window.
-fromFolder = 'C:\Users\wangh\Desktop\testimg';
-toFolder = 'C:\Users\wangh\Desktop\toimg';
-% toFolder = 'F:\Desktop\toimg';
+clc;    % Clear the command window.
+fromFolder = 'F:\Desktop\testimg';
+toFolder = 'F:\Desktop\toimg';
 rotateDegree = -90;
 
 
