@@ -9,3 +9,14 @@ conda list
 conda remove --name myenv --all
 conda info --envs
 ```
+
+
+```python
+# convert condalist to conda yml file
+import pandas as pd
+df = pd.read_table('environment.txt', '\\s+', skiprows=3, header=None, 
+                   names=['Name', Version', 'Build', 'Channel'])
+env = df.Name + '=' + df.Version
+env.to_csv('environment.yml', header=False, index=False)
+```
+
