@@ -8,6 +8,7 @@ conda deactivate
 conda list  
 conda remove --name myenv --all
 conda info --envs
+conda -V
 ```
 
 
