@@ -11,6 +11,9 @@ conda info --envs
 conda -V
 ```
 
+```bash
+pip install -r requirements.txt
+```
 
 ```python
 # convert condalist to conda yml file
